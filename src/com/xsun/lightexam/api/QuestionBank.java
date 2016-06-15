@@ -9,24 +9,16 @@ import java.util.Map;
  */
 public class QuestionBank {
 
-    private Map<String, String> subs;
+    private QuestionConfig[] subs;
 
-    public QuestionBank(Map<String, String> subs){
+    public QuestionBank(QuestionConfig[] subs){
         this.subs = subs;
-    }
-
-    String getSubQuestionConfig(String subid){
-        return subs.get(subid);
-    }
-
-    String[] getSubQuestions(){
-        return subs.keySet().toArray(new String[]{});
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("QuestionBank{");
-        sb.append("subs=").append(subs);
+        sb.append("subs=").append(Arrays.toString(subs));
         sb.append('}');
         return sb.toString();
     }
