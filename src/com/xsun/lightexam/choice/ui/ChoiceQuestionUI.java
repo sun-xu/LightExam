@@ -1,17 +1,15 @@
 package com.xsun.lightexam.choice.ui;
 
+import com.xsun.lightexam.api.QuestionUi;
 import com.xsun.lightexam.choice.ChoiceQuestion;
-import org.apache.commons.io.FileUtils;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 
 /**
  * Created by xsun on 2016/6/15.
  */
-public class ChoiceQuestionUI extends JFrame {
+public class ChoiceQuestionUI extends QuestionUi<ChoiceQuestion> {
 
     private JPanel jp1,jp2,jp3,jp4,jp5,jp6;
     private JTextArea jta;
@@ -24,20 +22,13 @@ public class ChoiceQuestionUI extends JFrame {
     private FlowLayout fl1;
     private BorderLayout bl1,bl2,bl3;
 
-    private ChoiceQuestion cq;
-
-    public ChoiceQuestionUI(){
-        initUI();
-    }
-
     public ChoiceQuestionUI(ChoiceQuestion cq){
-        this();
-        this.cq = cq;
+        super(cq);
+        initUI();
         update();
     }
 
     private void initUI(){
-//        gl = new GridLayout(4, 2, 5, 5);
         fl1 = new FlowLayout(FlowLayout.LEFT);
         gl1 = new GridLayout(4, 1, 5, 5);
         gl2 = new GridLayout(4, 1, 5, 5);
@@ -95,26 +86,14 @@ public class ChoiceQuestionUI extends JFrame {
 
         add(jp1, BorderLayout.CENTER);
         add(jp2, BorderLayout.SOUTH);
-
-        setTitle("选择题");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        pack();
     }
 
-    private void update(){
+    public void update(){
+        ChoiceQuestion cq = getQuestion();
         jta.setText(cq.getStem());
         op1.setText(cq.getOp1());
         op2.setText(cq.getOp2());
         op3.setText(cq.getOp3());
         op4.setText(cq.getOp4());
-    }
-
-
-    public static void main(String[] args) throws IOException{
-        ChoiceQuestionReader reader = new ChoiceQuestionReader();
-        String json = FileUtils.readFileToString(new File("G:\\LightExam\\res\\choice.json"), "UTF-8");
-        ChoiceQuestion question = (ChoiceQuestion) reader.readQuestion(json);
-        ChoiceQuestionUI ui = new ChoiceQuestionUI(question);
-        EventQueue.invokeLater(() -> ui.setVisible(true));
     }
 }

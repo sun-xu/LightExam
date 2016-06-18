@@ -1,3 +1,3 @@
 [
-  {"name":"选择题", "type":"com.xsun.lightexam.choice.ChoiceQuestion", "conf":"choice.json"}
+  {"name":"选择题", "question-type":"com.xsun.lightexam.choice.ChoiceQuestion", "conf":"choice.json", "ui-type":"com.xsun.lightexam.choice.ui.ChoiceQuestionUI"}
 ]
