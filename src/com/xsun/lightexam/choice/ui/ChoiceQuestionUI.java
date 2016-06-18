@@ -29,6 +29,8 @@ public class ChoiceQuestionUI extends QuestionUi<ChoiceQuestion> {
     }
 
     private void initUI(){
+        setLayout(new BorderLayout());
+
         fl1 = new FlowLayout(FlowLayout.LEFT);
         gl1 = new GridLayout(4, 1, 5, 5);
         gl2 = new GridLayout(4, 1, 5, 5);
