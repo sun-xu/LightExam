@@ -1,9 +1,7 @@
 package com.xsun.lightexam.bank;
 
 import com.google.gson.*;
-import com.google.gson.annotations.JsonAdapter;
 import com.xsun.lightexam.api.QuestionBank;
-import jdk.nashorn.internal.scripts.JO;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;

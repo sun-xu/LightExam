@@ -9,7 +9,6 @@ import javax.swing.*;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
 
@@ -31,13 +30,12 @@ public class MainUI extends JFrame {
         for (QuestionHolder holder : bank.getQuestions())
             jMenuBar.add(createJMenuWithQuestionHolder(holder));
         setJMenuBar(jMenuBar);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     private JMenu createJMenuWithQuestionHolder(final QuestionHolder holder){
         JMenu jMenu = new JMenu(holder.getName());
-//        jMenu.addActionListener(e -> EventQueue.invokeLater(() -> holder.getQuestionUi().setVisible(true)));
         jMenu.addMenuListener(new MenuListener() {
             @Override
             public void menuSelected(MenuEvent e) {

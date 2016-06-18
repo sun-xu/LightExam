@@ -17,10 +17,6 @@ public class QuestionBank {
         return questions;
     }
 
-    public void setQuestions(List<QuestionHolder> questions) {
-        this.questions = questions;
-    }
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("QuestionBank{");
