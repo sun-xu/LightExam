@@ -1,7 +1,6 @@
 package com.xsun.lightexam.choice.ui;
 
 import com.xsun.lightexam.choice.ChoiceQuestion;
-import com.xsun.lightexam.choice.ChoiceQuestionReader;
 import org.apache.commons.io.FileUtils;
 
 import javax.swing.*;

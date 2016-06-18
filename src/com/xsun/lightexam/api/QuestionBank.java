@@ -1,24 +1,30 @@
 package com.xsun.lightexam.api;
 
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Map;
 
 /**
  * Created by xsun on 2016/6/14.
  */
 public class QuestionBank {
 
-    private QuestionConfig[] subs;
+    private Question[] questions;
 
-    public QuestionBank(QuestionConfig[] subs){
-        this.subs = subs;
+    public QuestionBank(Question[] questions) {
+        this.questions = questions;
+    }
+
+    public Question[] getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(Question[] questions) {
+        this.questions = questions;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("QuestionBank{");
-        sb.append("subs=").append(Arrays.toString(subs));
+        sb.append("questions=").append(Arrays.toString(questions));
         sb.append('}');
         return sb.toString();
     }
