@@ -2,6 +2,7 @@ package com.xsun.lightexam.choice.ui;
 
 import com.xsun.lightexam.api.QuestionUi;
 import com.xsun.lightexam.choice.ChoiceQuestion;
+import com.xsun.lightexam.choice.ChoiceQuestionList;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +11,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by xsun on 2016/6/15.
  */
-public class ChoiceQuestionUI extends QuestionUi<ChoiceQuestion> {
+public class ChoiceQuestionUI extends QuestionUi<ChoiceQuestionList> {
 
     private JPanel jp1, jp2, jp3, jp4, jp5, jp6;
     private JTextArea jta;
@@ -23,9 +24,12 @@ public class ChoiceQuestionUI extends QuestionUi<ChoiceQuestion> {
     private FlowLayout fl1;
     private BorderLayout bl1, bl2, bl3;
 
-    public ChoiceQuestionUI(ChoiceQuestion cq) {
+    private int doing;
+
+    public ChoiceQuestionUI(ChoiceQuestionList cq) {
         super(cq);
         initUI();
+        doing = 0;
         update();
     }
 
@@ -55,18 +59,19 @@ public class ChoiceQuestionUI extends QuestionUi<ChoiceQuestion> {
         jrb3 = new JRadioButton("C");
         jrb4 = new JRadioButton("D");
         ActionListener actionListener = e -> {
+            ChoiceQuestion cq = getQuestion().get(doing);
             switch (e.getActionCommand()) {
                 case "A":
-                    getQuestion().setChosen(1);
+                    cq.setChosen(1);
                     break;
                 case "B":
-                    getQuestion().setChosen(2);
+                    cq.setChosen(2);
                     break;
                 case "C":
-                    getQuestion().setChosen(3);
+                    cq.setChosen(3);
                     break;
                 case "D":
-                    getQuestion().setChosen(4);
+                    cq.setChosen(4);
                     break;
             }
         };
@@ -101,7 +106,15 @@ public class ChoiceQuestionUI extends QuestionUi<ChoiceQuestion> {
 
         jp4 = new JPanel(fl1);
         jb1 = new JButton("上一题");
+        jb1.addActionListener(e -> {
+            doing--;
+            update();
+        });
         jb2 = new JButton("下一题");
+        jb2.addActionListener(e -> {
+            doing++;
+            update();
+        });
         jp4.add(jb1);
         jp4.add(jb2);
 
@@ -112,7 +125,7 @@ public class ChoiceQuestionUI extends QuestionUi<ChoiceQuestion> {
     }
 
     public void update() {
-        ChoiceQuestion cq = getQuestion();
+        ChoiceQuestion cq = getQuestion().get(doing);
         jta.setText(cq.getStem());
         op1.setText(cq.getOp1());
         op2.setText(cq.getOp2());
@@ -133,6 +146,16 @@ public class ChoiceQuestionUI extends QuestionUi<ChoiceQuestion> {
                 break;
             default:
                 bg.clearSelection();
+        }
+        if (doing == 0) {
+            jb1.setEnabled(false);
+            jb2.setEnabled(true);
+        } else if (doing == (getQuestion().size() - 1)) {
+            jb2.setEnabled(false);
+            jb1.setEnabled(true);
+        } else {
+            jb1.setEnabled(true);
+            jb2.setEnabled(true);
         }
     }
 }
