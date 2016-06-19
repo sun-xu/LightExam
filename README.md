@@ -1,2 +1,2 @@
-## LightExam
+# LightExam
 这是一个开源的、轻量的信息技术考试系统。
