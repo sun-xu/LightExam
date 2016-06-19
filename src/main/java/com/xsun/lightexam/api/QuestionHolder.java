@@ -3,13 +3,13 @@ package com.xsun.lightexam.api;
 /**
  * Created by xsun on 2016/6/18.
  */
-public class QuestionHolder {
+public class QuestionHolder<Q extends Question> {
 
     String name;
     Question question;
-    QuestionUi questionUi;
+    QuestionUi<Q> questionUi;
 
-    public QuestionHolder(String name, Question question, QuestionUi questionUi) {
+    public QuestionHolder(String name, Question question, QuestionUi<Q> questionUi) {
         this.name = name;
         this.question = question;
         this.questionUi = questionUi;
@@ -23,7 +23,7 @@ public class QuestionHolder {
         return question;
     }
 
-    public QuestionUi getQuestionUi() {
+    public QuestionUi<Q> getQuestionUi() {
         return questionUi;
     }
 
