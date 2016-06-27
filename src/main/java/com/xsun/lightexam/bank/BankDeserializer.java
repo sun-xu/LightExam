@@ -1,12 +1,12 @@
 package com.xsun.lightexam.bank;
 
 import com.google.gson.*;
+import com.xsun.lightexam.LightExam;
 import com.xsun.lightexam.api.Question;
 import com.xsun.lightexam.api.QuestionHolder;
 import com.xsun.lightexam.api.QuestionUi;
 import org.apache.commons.io.FileUtils;
 
-import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Type;
@@ -38,7 +38,8 @@ public class BankDeserializer implements JsonDeserializer<QuestionBank> {
             QuestionUi questionUi = null;
             try {
                 Class questionClass = Class.forName(questionType);
-                String confJson = FileUtils.readFileToString(FileUtils.getFile(new File("G:\\LightExam\\res"), conf), "UTF-8");
+                String confJson = FileUtils.readFileToString(
+                        FileUtils.getFile(LightExam.getInstance().getBankPath(), conf), "UTF-8");
                 question = (Question) gson.fromJson(confJson, questionClass);
                 questionUi = (QuestionUi) Class.forName(uiType).getConstructor(questionClass).newInstance(question);
             } catch (IllegalAccessException | InstantiationException | ClassNotFoundException | IOException | NoSuchMethodException | InvocationTargetException e) {

@@ -1,9 +1,9 @@
 package com.xsun.lightexam.bank;
 
 import com.google.gson.*;
+import com.xsun.lightexam.LightExam;
 import org.apache.commons.io.FileUtils;
 
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -18,7 +18,7 @@ public class QuestionBankReader {
         Gson gson0 = builder.create();
         try {
             JsonArray registry = gson0.fromJson(FileUtils.readFileToString(
-                    new File("G:\\LightExam\\res\\question-registry.json"), "UTF-8"), JsonArray.class);
+                    FileUtils.getFile(LightExam.getInstance().getConfigPath(), "question-registry.json"), "UTF-8"), JsonArray.class);
             for(JsonElement e : registry){
                 JsonObject object = (JsonObject) e;
                 String questionClassName = object.get("Question").getAsString();
