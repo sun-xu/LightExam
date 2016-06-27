@@ -2,7 +2,6 @@ package com.xsun.lightexam.bank;
 
 import com.google.gson.*;
 import com.xsun.lightexam.api.Question;
-import com.xsun.lightexam.api.QuestionBank;
 import com.xsun.lightexam.api.QuestionHolder;
 import com.xsun.lightexam.api.QuestionUi;
 import org.apache.commons.io.FileUtils;

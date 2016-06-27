@@ -1,6 +1,6 @@
 package com.xsun.lightexam;
 
-import com.xsun.lightexam.api.QuestionBank;
+import com.xsun.lightexam.bank.QuestionBank;
 
 /**
  * Created by xsun on 2016/6/18.

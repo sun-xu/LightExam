@@ -1,7 +1,7 @@
 package com.xsun.lightexam.gui;
 
-import com.xsun.lightexam.api.QuestionBank;
 import com.xsun.lightexam.api.QuestionHolder;
+import com.xsun.lightexam.bank.QuestionBank;
 import com.xsun.lightexam.bank.QuestionBankReader;
 import org.apache.commons.io.FileUtils;
 

@@ -1,7 +1,6 @@
 package com.xsun.lightexam.bank;
 
 import com.google.gson.*;
-import com.xsun.lightexam.api.QuestionBank;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;

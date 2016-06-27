@@ -1,4 +1,6 @@
-package com.xsun.lightexam.api;
+package com.xsun.lightexam.bank;
+
+import com.xsun.lightexam.api.QuestionHolder;
 
 import java.util.List;
 
