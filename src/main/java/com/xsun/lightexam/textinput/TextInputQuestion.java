@@ -8,9 +8,11 @@ import com.xsun.lightexam.api.Question;
 public class TextInputQuestion implements Question {
 
     String source, yours;
+    int timeLimit;
 
-    public TextInputQuestion(String source) {
+    public TextInputQuestion(String source, int timeLimit) {
         this.source = source;
+        this.timeLimit = timeLimit;
         yours = "";
     }
 
@@ -20,6 +22,10 @@ public class TextInputQuestion implements Question {
 
     public String getYours() {
         return yours;
+    }
+
+    public int getTimeLimit() {
+        return timeLimit;
     }
 
     public void setYours(String yours) {

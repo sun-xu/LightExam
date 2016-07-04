@@ -1,4 +1,9 @@
 [
   {"Question":"com.xsun.lightexam.choice.ChoiceQuestion",
-    "Deserializer":"$default"}
+    "Deserializer": "$default"
+  },
+  {
+    "Question": "com.xsun.lightexam.textinput.TextInputQuestion",
+    "Deserializer": "com.xsun.lightexam.textinput.TextInputQuestionReader"
+  }
 ]

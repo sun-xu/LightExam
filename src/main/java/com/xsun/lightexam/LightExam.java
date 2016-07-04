@@ -23,7 +23,6 @@ public class LightExam {
     }
 
     public static void main(String[] args) {
-        System.out.println(LightExam.getInstance().getConfigPath());
         QuestionBankReader bankReader = new QuestionBankReader();
         QuestionBank bank = null;
         try {
