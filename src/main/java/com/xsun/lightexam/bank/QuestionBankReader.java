@@ -1,10 +1,11 @@
 package com.xsun.lightexam.bank;
 
-import com.google.gson.*;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.xsun.lightexam.LightExam;
-import org.apache.commons.io.FileUtils;
+import com.xsun.lightexam.QuestionRegistry;
 
-import java.io.IOException;
+import java.util.Properties;
 
 /**
  * Created by xsun on 2016/6/14.
@@ -15,22 +16,18 @@ public class QuestionBankReader {
 
     public QuestionBankReader(){
         GsonBuilder builder = new GsonBuilder();
-        Gson gson0 = builder.create();
         try {
-            JsonArray registry = gson0.fromJson(FileUtils.readFileToString(
-                    FileUtils.getFile(LightExam.getInstance().getConfigPath(), "question-registry.json"), "UTF-8"), JsonArray.class);
-            for(JsonElement e : registry){
-                JsonObject object = (JsonObject) e;
-                String questionClassName = object.get("Question").getAsString();
-                String deserializerClassName = object.get("Deserializer").getAsString();
+            QuestionRegistry registry = LightExam.getInstance().getQuestionRegistry();
+            for (Properties properties : registry.getRegistry()) {
+                String questionClassName = properties.getProperty("Question");
+                String deserializerClassName = properties.getProperty("Deserializer");
                 if(!deserializerClassName.equals("$default")) {
                     Class<?> questionClass = Class.forName(questionClassName);
                     Object deserializer = Class.forName(deserializerClassName).newInstance();
                     builder.registerTypeAdapter(questionClass, deserializer);
                 }
             }
-        } catch (IOException | ClassNotFoundException
-                |InstantiationException | IllegalAccessException e) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
             System.exit(1);
         }

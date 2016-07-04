@@ -7,8 +7,9 @@ import com.xsun.lightexam.api.Question;
  */
 public class TextInputQuestion implements Question {
 
-    String source, yours;
-    int timeLimit;
+    private String source, yours;
+    private int timeLimit;
+    private String name;
 
     public TextInputQuestion(String source, int timeLimit) {
         this.source = source;
@@ -30,6 +31,16 @@ public class TextInputQuestion implements Question {
 
     public void setYours(String yours) {
         this.yours = yours;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.xsun.lightexam.choice.ui;
 
-import com.xsun.lightexam.api.QuestionUi;
 import com.xsun.lightexam.choice.ChoiceQuestion;
 import com.xsun.lightexam.choice.ChoiceQuestionList;
 
@@ -11,7 +10,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by xsun on 2016/6/15.
  */
-public class ChoiceQuestionUI extends QuestionUi<ChoiceQuestionList> {
+public class ChoiceQuestionUI extends JFrame {
 
     private JPanel jp1, jp2, jp3, jp4, jp5, jp6;
     private JTextArea jta;
@@ -25,9 +24,10 @@ public class ChoiceQuestionUI extends QuestionUi<ChoiceQuestionList> {
     private BorderLayout bl1, bl2, bl3;
 
     private int doing;
+    private ChoiceQuestionList questions;
 
     public ChoiceQuestionUI(ChoiceQuestionList cq) {
-        super(cq);
+        questions = cq;
         initUI();
         doing = 0;
         update();
@@ -157,5 +157,9 @@ public class ChoiceQuestionUI extends QuestionUi<ChoiceQuestionList> {
             jb1.setEnabled(true);
             jb2.setEnabled(true);
         }
+    }
+
+    public ChoiceQuestionList getQuestion() {
+        return questions;
     }
 }

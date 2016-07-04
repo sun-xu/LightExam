@@ -1,6 +1,6 @@
 package com.xsun.lightexam.bank;
 
-import com.xsun.lightexam.api.QuestionHolder;
+import com.xsun.lightexam.api.Question;
 
 import java.util.List;
 
@@ -9,13 +9,13 @@ import java.util.List;
  */
 public class QuestionBank {
 
-    private List<QuestionHolder> questions;
+    private List<Question> questions;
 
-    public QuestionBank(List<QuestionHolder> questions) {
+    public QuestionBank(List<Question> questions) {
         this.questions = questions;
     }
 
-    public List<QuestionHolder> getQuestions() {
+    public List<Question> getQuestions() {
         return questions;
     }
 

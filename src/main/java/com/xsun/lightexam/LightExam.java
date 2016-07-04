@@ -14,6 +14,8 @@ import java.io.IOException;
  */
 public class LightExam {
 
+    private QuestionRegistry registry;
+
     public static final LightExam getInstance() {
         return InstanceHolder.INSTANCE;
     }
@@ -37,6 +39,19 @@ public class LightExam {
         }
         MainUI ui = new MainUI(bank);
         EventQueue.invokeLater(() -> ui.setVisible(true));
+    }
+
+    public QuestionRegistry getQuestionRegistry() {
+        if (registry == null) {
+            try {
+                registry = QuestionRegistry.getQuestionRegistryFromJson(FileUtils.readFileToString(
+                        FileUtils.getFile(getConfigPath(), "question-registry.json"), "UTF-8"
+                ));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return registry;
     }
 
     public File getConfigPath() {

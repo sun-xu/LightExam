@@ -7,6 +7,7 @@ import com.xsun.lightexam.api.Question;
  */
 public class ChoiceQuestion implements Question{
 
+    private String name;
     private String stem;
     private String op1;
     private String op2;
@@ -48,6 +49,16 @@ public class ChoiceQuestion implements Question{
 
     public String getStem() {
         return stem;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override

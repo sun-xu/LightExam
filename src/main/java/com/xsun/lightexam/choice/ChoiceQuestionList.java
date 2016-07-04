@@ -9,5 +9,15 @@ import java.util.ArrayList;
  */
 public class ChoiceQuestionList extends ArrayList<ChoiceQuestion> implements QuestionList<ChoiceQuestion> {
 
+    private String name;
 
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
 }

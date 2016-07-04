@@ -1,6 +1,5 @@
 package com.xsun.lightexam.textinput.ui;
 
-import com.xsun.lightexam.api.QuestionUi;
 import com.xsun.lightexam.textinput.TextInputQuestion;
 
 import javax.swing.*;
@@ -11,7 +10,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by xsun on 2016/6/18.
  */
-public class TextInputQuestionUI extends QuestionUi<TextInputQuestion> {
+public class TextInputQuestionUI extends JFrame {
 
     private class StartButtonListener implements ActionListener {
 
@@ -96,15 +95,15 @@ public class TextInputQuestionUI extends QuestionUi<TextInputQuestion> {
     private JButton jb1, jb2;
     private JLabel jl1, jl2;
     private Timer timer;
+    private TextInputQuestion question;
 
     public TextInputQuestionUI(TextInputQuestion question) {
-        super(question);
+        this.question = question;
         timer = new Timer(question.getTimeLimit());
         initUI();
         update();
     }
 
-    @Override
     public void update() {
         jta1.setText(getQuestion().getSource());
         jta2.setText(getQuestion().getYours());
@@ -146,5 +145,9 @@ public class TextInputQuestionUI extends QuestionUi<TextInputQuestion> {
         int second = time % 60;
         int minute = (time - second) / 60;
         return minute + "分" + second + "秒";
+    }
+
+    public TextInputQuestion getQuestion() {
+        return question;
     }
 }
