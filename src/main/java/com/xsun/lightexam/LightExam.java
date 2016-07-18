@@ -2,10 +2,8 @@ package com.xsun.lightexam;
 
 import com.xsun.lightexam.bank.QuestionBank;
 import com.xsun.lightexam.bank.QuestionBankReader;
-import com.xsun.lightexam.gui.MainUI;
 import org.apache.commons.io.FileUtils;
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -15,6 +13,7 @@ import java.io.IOException;
 public class LightExam {
 
     private QuestionRegistry registry;
+    private Examination exam;
 
     public static final LightExam getInstance() {
         return InstanceHolder.INSTANCE;
@@ -37,8 +36,9 @@ public class LightExam {
             e.printStackTrace();
             System.exit(1);
         }
-        MainUI ui = new MainUI(bank);
-        EventQueue.invokeLater(() -> ui.setVisible(true));
+        getInstance().exam = new Examination(bank);
+        //TODO: 加入登录系统
+        getInstance().exam.start();
     }
 
     public QuestionRegistry getQuestionRegistry() {
@@ -52,6 +52,10 @@ public class LightExam {
             }
         }
         return registry;
+    }
+
+    public Examination getExamination() {
+        return exam;
     }
 
     public File getConfigPath() {

@@ -31,6 +31,7 @@ public class ChoiceQuestionUI extends JFrame {
         initUI();
         doing = 0;
         update();
+        pack();
     }
 
     private void initUI() {

@@ -16,5 +16,6 @@ repositories {
 dependencies {
     compile 'commons-io:commons-io:2.5'
     compile 'com.google.code.gson:gson:2.7'
+    compile 'org.apache.commons:commons-lang3:3.4'
     testCompile 'org.testng:testng:6.9.10'
 }

@@ -1,15 +1,15 @@
 package com.xsun.lightexam.textinput;
 
 import com.xsun.lightexam.api.Question;
+import com.xsun.lightexam.util.AbstractQuestion;
 
 /**
  * Created by xsun on 2016/6/18.
  */
-public class TextInputQuestion implements Question {
+public class TextInputQuestion extends AbstractQuestion implements Question {
 
     private String source, yours;
     private int timeLimit;
-    private String name;
 
     public TextInputQuestion(String source, int timeLimit) {
         this.source = source;
@@ -31,16 +31,6 @@ public class TextInputQuestion implements Question {
 
     public void setYours(String yours) {
         this.yours = yours;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
     }
 
     @Override

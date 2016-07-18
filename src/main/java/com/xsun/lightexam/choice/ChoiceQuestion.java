@@ -1,19 +1,20 @@
 package com.xsun.lightexam.choice;
 
 import com.xsun.lightexam.api.Question;
+import com.xsun.lightexam.util.AbstractQuestion;
 
 /**
  * Created by xsun on 2016/6/14.
  */
-public class ChoiceQuestion implements Question{
+public class ChoiceQuestion extends AbstractQuestion implements Question {
 
-    private String name;
     private String stem;
     private String op1;
     private String op2;
     private String op3;
     private String op4;
     private int chosen = 0;
+    private int anwser;
 
     public ChoiceQuestion(String stem, String op1, String op2, String op3, String op4) {
         this.stem = stem;
@@ -52,16 +53,6 @@ public class ChoiceQuestion implements Question{
     }
 
     @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("ChoiceQuestion{");
         sb.append("chosen=").append(chosen);
@@ -72,5 +63,13 @@ public class ChoiceQuestion implements Question{
         sb.append(", op4='").append(op4).append('\'');
         sb.append('}');
         return sb.toString();
+    }
+
+    public int getAnwser() {
+        return anwser;
+    }
+
+    public void setAnwser(int anwser) {
+        this.anwser = anwser;
     }
 }

@@ -102,6 +102,7 @@ public class TextInputQuestionUI extends JFrame {
         timer = new Timer(question.getTimeLimit());
         initUI();
         update();
+        pack();
     }
 
     public void update() {

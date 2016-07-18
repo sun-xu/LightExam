@@ -20,8 +20,8 @@ public class QuestionBankReader {
             QuestionRegistry registry = LightExam.getInstance().getQuestionRegistry();
             for (Properties properties : registry.getRegistry()) {
                 String questionClassName = properties.getProperty("Question");
-                String deserializerClassName = properties.getProperty("Deserializer");
-                if(!deserializerClassName.equals("$default")) {
+                String deserializerClassName = properties.getProperty("Reader");
+                if (deserializerClassName != null) {
                     Class<?> questionClass = Class.forName(questionClassName);
                     Object deserializer = Class.forName(deserializerClassName).newInstance();
                     builder.registerTypeAdapter(questionClass, deserializer);

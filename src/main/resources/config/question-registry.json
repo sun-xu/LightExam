@@ -1,9 +1,13 @@
 [
-  {"Question":"com.xsun.lightexam.choice.ChoiceQuestion",
-    "Deserializer": "$default"
+  {
+    "Question": "com.xsun.lightexam.choice.ChoiceQuestionList",
+    "UiFactory": "com.xsun.lightexam.choice.ChoiceQuestionUiFactory",
+    "Marker": "com.xsun.lightexam.choice.ChoiceQuestionListMarker"
   },
   {
     "Question": "com.xsun.lightexam.textinput.TextInputQuestion",
-    "Deserializer": "com.xsun.lightexam.textinput.TextInputQuestionReader"
+    "Reader": "com.xsun.lightexam.textinput.TextInputQuestionReader",
+    "UiFactory": "com.xsun.lightexam.textinput.TextInputQuestionUiFactory",
+    "Marker": "com.xsun.lightexam.textinput.TextInputQuestionMarker"
   }
 ]

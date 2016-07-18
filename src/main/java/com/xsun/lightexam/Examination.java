@@ -3,8 +3,10 @@ package com.xsun.lightexam;
 import com.xsun.lightexam.api.QuestionEnvironmentInitializer;
 import com.xsun.lightexam.bank.QuestionBank;
 import com.xsun.lightexam.gui.MainUI;
+import com.xsun.lightexam.gui.MarkingUI;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.List;
 import java.util.Properties;
 
@@ -22,11 +24,12 @@ public class Examination {
     public void start() {
         initExamEnv();
         JFrame jFrame = initUi();
+        EventQueue.invokeLater(() -> jFrame.setVisible(true));
     }
 
     private void initExamEnv() {
         List<Properties> registry = LightExam.getInstance().getQuestionRegistry().getRegistry();
-        for (int i = 0; i <= registry.size(); i++) {
+        for (int i = 0; i < registry.size(); i++) {
             String envInitClassName;
             if ((envInitClassName = registry.get(i).getProperty("EnvInit")) != null) {
                 QuestionEnvironmentInitializer initializer = null;
@@ -39,6 +42,10 @@ public class Examination {
             }
         }
 
+    }
+
+    public void stop() {
+        EventQueue.invokeLater(() -> new MarkingUI(questionBank).setVisible(true));
     }
 
     private JFrame initUi() {
