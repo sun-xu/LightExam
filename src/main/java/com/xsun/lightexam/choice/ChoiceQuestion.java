@@ -13,15 +13,16 @@ public class ChoiceQuestion extends AbstractQuestion implements Question {
     private String op2;
     private String op3;
     private String op4;
-    private int chosen = 0;
-    private int anwser;
+    private int chosen;
+    private int answer;
 
-    public ChoiceQuestion(String stem, String op1, String op2, String op3, String op4) {
+    public ChoiceQuestion(String stem, String op1, String op2, String op3, String op4, int answer) {
         this.stem = stem;
         this.op1 = op1;
         this.op2 = op2;
         this.op3 = op3;
         this.op4 = op4;
+        this.answer = answer;
     }
 
     public void setChosen(int chosen) {
@@ -52,6 +53,10 @@ public class ChoiceQuestion extends AbstractQuestion implements Question {
         return stem;
     }
 
+    public int getAnswer() {
+        return answer;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("ChoiceQuestion{");
@@ -61,15 +66,10 @@ public class ChoiceQuestion extends AbstractQuestion implements Question {
         sb.append(", op2='").append(op2).append('\'');
         sb.append(", op3='").append(op3).append('\'');
         sb.append(", op4='").append(op4).append('\'');
+        sb.append(", answer=").append(answer);
         sb.append('}');
         return sb.toString();
     }
 
-    public int getAnwser() {
-        return anwser;
-    }
 
-    public void setAnwser(int anwser) {
-        this.anwser = anwser;
-    }
 }

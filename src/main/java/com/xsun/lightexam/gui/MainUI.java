@@ -27,12 +27,19 @@ public class MainUI extends JFrame {
     private void initUI() {
         setTitle("Light Exam");
         setJMenuBar(createJMenuBar());
-//        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                super.windowClosing(e);
-                EventQueue.invokeLater(MainUI.this::stopMethod);
+                switch (JOptionPane.showOptionDialog(MainUI.this, "您还没有评卷，你是要现在评卷或是直接关闭程序？", "关闭",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+                        new Object[]{"评卷", "关闭"}, "评卷")) {
+                    case 0:
+                        LightExam.getInstance().getExamination().mark();
+                        break;
+                    case 1:
+                        LightExam.getInstance().getExamination().stop();
+                        break;
+                }
             }
         });
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -63,16 +70,11 @@ public class MainUI extends JFrame {
         jMenu.addMenuListener(new MenuAdapter() {
             @Override
             public void menuSelected(MenuEvent e) {
-                EventQueue.invokeLater(MainUI.this::stopMethod);
+                EventQueue.invokeLater(LightExam.getInstance().getExamination()::mark);
             }
         });
         jMenuBar.add(jMenu);
         return jMenuBar;
-    }
-
-    private void stopMethod() {
-        setVisible(false);
-        LightExam.getInstance().getExamination().stop();
     }
 
     private class MenuAdapter implements MenuListener {

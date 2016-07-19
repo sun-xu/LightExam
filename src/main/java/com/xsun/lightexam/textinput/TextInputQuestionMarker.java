@@ -10,7 +10,7 @@ public class TextInputQuestionMarker implements QuestionMarker<TextInputQuestion
 
     @Override
     public double mark(TextInputQuestion question) {
-        return StringUtils.getLevenshteinDistance(question.getYours(), question.getSource()) /
-                Math.max(question.getYours().length(), question.getSource().length());
+        return 1 - (StringUtils.getLevenshteinDistance(question.getYours(), question.getSource()) / 1.0d /
+                Math.max(question.getYours().length(), question.getSource().length()));
     }
 }

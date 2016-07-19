@@ -8,6 +8,6 @@ import com.xsun.lightexam.api.QuestionMarker;
 public class ChoiceQuestionMarker implements QuestionMarker<ChoiceQuestion> {
     @Override
     public double mark(ChoiceQuestion question) {
-        return question.getChosen() == question.getAnwser() ? 1 : 0;
+        return question.getChosen() == question.getAnswer() ? 1 : 0;
     }
 }

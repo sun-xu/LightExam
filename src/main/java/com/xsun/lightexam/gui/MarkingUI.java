@@ -8,6 +8,7 @@ import com.xsun.lightexam.bank.QuestionBank;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by xsun on 2016/7/18.
@@ -19,10 +20,19 @@ public class MarkingUI extends JFrame {
 
     public MarkingUI(QuestionBank bank) {
         this.bank = bank;
+        setTitle("评卷");
         jta = new JTextArea();
         jta.setEditable(false);
         jta.setLineWrap(true);
         add(jta, BorderLayout.CENTER);
+        JPanel jp = new JPanel();
+        JButton jb1 = new JButton("返回");
+        jb1.addActionListener(e -> setVisible(false));
+        jp.add(jb1);
+        JButton jb2 = new JButton("退出");
+        jb2.addActionListener(e -> LightExam.getInstance().getExamination().stop());
+        jp.add(jb2);
+        add(jp, BorderLayout.SOUTH);
         setSize(200, 450);
         new BankMarker().execute();
     }
@@ -35,7 +45,7 @@ public class MarkingUI extends JFrame {
                     question -> {
                         Grade g = new Grade();
                         LightExam.getInstance().getQuestionRegistry().getRegistry().stream()
-                                .filter(p -> p.getProperty("Question").equals(question.getName()))
+                                .filter(p -> p.getProperty("Question").equals(question.getClass().getName()))
                                 .map(p -> p.getProperty("Marker"))
                                 .findFirst().ifPresent(s -> {
                             try {
@@ -54,15 +64,18 @@ public class MarkingUI extends JFrame {
 
         @Override
         protected void done() {
-
+            try {
+                jta.append(String.format("总分: %.1f", get() * 100));
+            } catch (InterruptedException e) {
+            } catch (ExecutionException e) {
+                jta.append("评分失败:" + e);
+            }
         }
 
         @Override
         protected void process(List<Grade> chunks) {
             chunks.forEach(
-                    grade -> {
-                        jta.add(String.format("%s得分"))
-                    }
+                    grade -> jta.append(String.format("%s得分: %.1f\n", grade.question.getName(), grade.grade * 100))
             );
         }
     }

@@ -45,6 +45,10 @@ public class Examination {
     }
 
     public void stop() {
+        System.exit(0);
+    }
+
+    public void mark() {
         EventQueue.invokeLater(() -> new MarkingUI(questionBank).setVisible(true));
     }
 
