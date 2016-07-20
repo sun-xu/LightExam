@@ -59,10 +59,10 @@ public class LightExam {
     }
 
     public File getConfigPath() {
-        return FileUtils.getFile(System.getProperty("user.dir"), "build", "resources", "main", "config");
+        return FileUtils.getFile(System.getProperty("user.dir"), "res", "config");
     }
 
     public File getBankPath() {
-        return FileUtils.getFile(System.getProperty("user.dir"), "build", "resources", "main", "bank");
+        return FileUtils.getFile(System.getProperty("user.dir"), "res",  "bank");
     }
 }

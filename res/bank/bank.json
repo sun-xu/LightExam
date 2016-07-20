@@ -1,0 +1,13 @@
+
+[
+  {
+    "name": "选择题",
+    "question-type": "com.xsun.lightexam.choice.ChoiceQuestionList",
+    "conf": "choice.json"
+  },
+  {
+    "name": "打字题",
+    "question-type": "com.xsun.lightexam.textinput.TextInputQuestion",
+    "conf": "text-input.json"
+  }
+]
