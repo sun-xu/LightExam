@@ -5,3 +5,15 @@ jdk:
 
 install:
   - chmod +x gradlew
+
+script:
+  - gradle distZip
+
+deploy:
+  provider: releases
+  user: "sun-xu"
+  password: "ccno.1123654789"
+  file: build/distributions/LightExam-0.2.0-ALPHA.zip
+  skip_cleanup: true
+  on:
+    tags: true
