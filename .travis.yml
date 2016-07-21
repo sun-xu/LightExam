@@ -10,6 +10,7 @@ deploy:
   api_key:
     secure: CS5WR7KbaPlCJwlLUtTmGm0RwYah/gwe/5Vu4UmA+IcL7FDKCvo+MvcClxVxfCif97yoP09gKgTda2JdPUgz9AJ+Kw109PHFmLm+kFeAI7XBysULZPxOTaNGxGPKwOvw89Q/fAG681G3tP4UR/z6HWW1mcyUN5OI2klvwowcoIGTDlMG0HBivqUUClwTw/vb/ghahjsJ8ZtE7lCXsYkUqnNt7yWVT+0FHX9TG4j6Co9XYN8zxmnPi4T9pYMoLSVxVVxi/wayZ14cA7c6ly1Txb4Y0gGVdFTLlY70qFFEUSCgStIsbO078dhkwCE6Ms78FhJOSmZR0WYhgTcQtQYkwp7Eh4+lbvwDwwxL+u7J/EViHAOxu8YaDDe8I4afvfytGCxF6NiStloZN1ilv+PNgNs87VTypZULG4mUELyld/K/WJhYF1323xm/2li4XN2BWGGM6nxWh5S2s/mqBWkWlYXFv6TZJAL1xkZtrNh0ig1lhkuDFEZVQTd1g3S4lOtQFjLzkb9rlRxMWthnwds+Khi4trAsbhVD61NfEiw4mQ6PtD1a8eHbGZRfMi72Idk1VCyMm6NQjLJssmYcE+M84EVUGmbDhU07ZxKirrmgWBgrMhTovY1YGm9eGtySLP0BtjsSlyOoWm9B1ZS3iGznfCb/Wmb6Uur0RF0zP9UTFGo=
   file: build/distributions/LightExam-0.2.0-ALPHA.zip
+  skip_cleanup: true
   on:
     tags: true
     repo: sun-xu/LightExam
