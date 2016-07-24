@@ -57,11 +57,20 @@ public class MainUI extends JFrame {
                 e.printStackTrace();
             }
             final JFrame jFrame = uiFactory.getQuestionUi(bank.getQuestions().get(i));
+            jFrame.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosing(WindowEvent e) {
+                    MainUI.this.setVisible(true);
+                }
+            });
             JMenu jMenu = new JMenu(bank.getQuestions().get(i).getName());
             jMenu.addMenuListener(new MenuAdapter() {
                 @Override
                 public void menuSelected(MenuEvent e) {
-                    EventQueue.invokeLater(() -> jFrame.setVisible(true));
+                    EventQueue.invokeLater(() -> {
+                        jFrame.setVisible(true);
+                        MainUI.this.setVisible(false);
+                    });
                 }
             });
             jMenuBar.add(jMenu);
@@ -78,20 +87,11 @@ public class MainUI extends JFrame {
     }
 
     private class MenuAdapter implements MenuListener {
-
         @Override
-        public void menuSelected(MenuEvent e) {
-
-        }
-
+        public void menuSelected(MenuEvent e) {}
         @Override
-        public void menuDeselected(MenuEvent e) {
-
-        }
-
+        public void menuDeselected(MenuEvent e) {}
         @Override
-        public void menuCanceled(MenuEvent e) {
-
-        }
+        public void menuCanceled(MenuEvent e) {}
     }
 }
