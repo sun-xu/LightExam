@@ -9,5 +9,9 @@
     "Reader": "com.xsun.lightexam.textinput.TextInputQuestionReader",
     "UiFactory": "com.xsun.lightexam.textinput.TextInputQuestionUiFactory",
     "Marker": "com.xsun.lightexam.textinput.TextInputQuestionMarker"
+  },
+  {
+    "Question": "com.xsun.lightexam.weboperation.WebOperationQuestion",
+    "UiFactory": "com.xsun.lightexam.operation.OperationQuestionUiFactory"
   }
 ]

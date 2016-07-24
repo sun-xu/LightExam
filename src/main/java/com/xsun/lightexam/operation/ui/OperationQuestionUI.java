@@ -4,6 +4,7 @@ import com.xsun.lightexam.operation.OperationQuestion;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
 
 /**
  * Created by xsun on 2016/7/24.
@@ -33,7 +34,10 @@ public class OperationQuestionUI extends JFrame {
         jta.setEditable(false);
 
         jb = new JButton("返回");
-        jb.addActionListener(e -> setVisible(false));
+        jb.addActionListener(e -> {
+            setVisible(false);
+            processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+        });
         jp2 = new JPanel();
         ((FlowLayout)jp2.getLayout()).setAlignment(FlowLayout.RIGHT);
         jp2.add(jb);
@@ -42,8 +46,6 @@ public class OperationQuestionUI extends JFrame {
         add(jp1, BorderLayout.NORTH);
         add(jta, BorderLayout.CENTER);
         add(jp2, BorderLayout.SOUTH);
-
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         setSize(400, 500);
     }

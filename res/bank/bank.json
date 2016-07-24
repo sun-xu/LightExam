@@ -1,4 +1,3 @@
-
 [
   {
     "name": "选择题",
@@ -9,5 +8,10 @@
     "name": "打字题",
     "question-type": "com.xsun.lightexam.textinput.TextInputQuestion",
     "conf": "text-input.json"
+  },
+  {
+    "name": "IE操作题",
+    "question-type": "com.xsun.lightexam.weboperation.WebOperationQuestion",
+    "conf": "web-operation.json"
   }
 ]

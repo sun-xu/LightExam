@@ -1,0 +1,6 @@
+{
+  "requirement": "requirement",
+  "host": "example.com",
+  "webroot": "webroot",
+  "target": "target.txt"
+}
