@@ -12,6 +12,7 @@
   },
   {
     "Question": "com.xsun.lightexam.weboperation.WebOperationQuestion",
-    "UiFactory": "com.xsun.lightexam.operation.OperationQuestionUiFactory"
+    "UiFactory": "com.xsun.lightexam.operation.OperationQuestionUiFactory",
+    "EnvInit": "com.xsun.lightexam.weboperation.WebOperationQuestionEnvironmentInitializer"
   }
 ]

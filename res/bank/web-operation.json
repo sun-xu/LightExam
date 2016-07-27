@@ -1,6 +1,6 @@
 {
   "requirement": "requirement",
-  "host": "example.com",
-  "webroot": "webroot",
+  "host": "test.net",
+  "webroot": "webroot/",
   "target": "target.txt"
 }
