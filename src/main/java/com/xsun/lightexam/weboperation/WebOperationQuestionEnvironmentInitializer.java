@@ -2,14 +2,9 @@ package com.xsun.lightexam.weboperation;
 
 import com.xsun.lightexam.LightExam;
 import com.xsun.lightexam.api.QuestionEnvironmentInitializer;
-import io.leopard.javahost.JavaHost;
 import io.undertow.Undertow;
 import io.undertow.server.handlers.resource.FileResourceManager;
 import org.apache.commons.io.FileUtils;
-
-import java.net.Inet4Address;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 
 import static io.undertow.Handlers.*;
 
@@ -20,17 +15,10 @@ public class WebOperationQuestionEnvironmentInitializer implements QuestionEnvir
 
     @Override
     public void initEnvironment(WebOperationQuestion question) {
-        JavaHost.updateVirtualDns(question.getHost(), "127.0.0.1");
-        JavaHost.printAllVirtualDns();
-        try {
-            System.out.println(Inet4Address.getByName("test.com").getHostAddress());
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        }
         Undertow server = Undertow.builder()
                 .addHttpListener(8080, "127.0.0.1")
                 .setHandler(
-//                        ipAccessControl(
+                        ipAccessControl(
                                 virtualHost(
                                         resource(
                                                 new FileResourceManager(
@@ -40,12 +28,16 @@ public class WebOperationQuestionEnvironmentInitializer implements QuestionEnvir
                                                 )
 
                                         ), question.getHost()
-
-                                )
-//                                , false
-//                        ).addAllow("127.0.0.1")
+                                ), false
+                        ).addAllow("127.0.0.1")
                 ).build();
         server.start();
+    }
+
+    public static void main(String[] args) {
+        WebOperationQuestion question = new WebOperationQuestion("requirement", "abc.com", "webroot", "");
+        WebOperationQuestionEnvironmentInitializer initializer = new WebOperationQuestionEnvironmentInitializer();
+        initializer.initEnvironment(question);
     }
 
 }

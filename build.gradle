@@ -22,7 +22,6 @@ dependencies {
     compile 'com.google.code.gson:gson:2.7'
     compile 'org.apache.commons:commons-lang3:3.4'
     compile 'io.undertow:undertow-core:1.4.0.CR3'
-    compile 'io.leopard:javahost:0.9.6'
     testCompile 'org.testng:testng:6.9.10'
 }
 
