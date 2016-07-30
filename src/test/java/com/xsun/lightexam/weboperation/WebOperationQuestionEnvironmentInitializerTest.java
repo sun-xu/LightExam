@@ -25,7 +25,7 @@ public class WebOperationQuestionEnvironmentInitializerTest {
 
     @Test
     public void testInitEnvironment() throws Exception {
-        WebOperationQuestion question = new WebOperationQuestion("requirement", "abc.com", "webroot", "");
+        WebOperationQuestion question = new WebOperationQuestion("requirement", null, "abc.com", "webroot", "");
         WebOperationQuestionEnvironmentInitializer initializer = new WebOperationQuestionEnvironmentInitializer();
         initializer.initEnvironment(question);
 

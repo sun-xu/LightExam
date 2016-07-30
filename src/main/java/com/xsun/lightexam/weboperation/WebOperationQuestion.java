@@ -16,8 +16,11 @@
 
 package com.xsun.lightexam.weboperation;
 
+import com.xsun.lightexam.operation.CheckPoint;
 import com.xsun.lightexam.operation.OperationQuestion;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import java.util.List;
 
 /**
  * Created by xsun on 2016/7/24.
@@ -28,8 +31,8 @@ public class WebOperationQuestion extends OperationQuestion {
     private String webroot;
     private String target;
 
-    public WebOperationQuestion(String requirement, String host, String webroot, String target) {
-        super(requirement);
+    public WebOperationQuestion(String requirement, List<CheckPoint> checkPoints, String host, String webroot, String target) {
+        super(requirement, checkPoints);
         this.host = host;
         this.webroot = webroot;
         this.target = target;

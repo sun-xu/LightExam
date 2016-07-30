@@ -16,8 +16,11 @@
 
 package com.xsun.lightexam.windowsoperation;
 
+import com.xsun.lightexam.operation.CheckPoint;
 import com.xsun.lightexam.operation.OperationQuestion;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import java.util.List;
 
 /**
  * Created by xsun on 2016/7/28.
@@ -26,8 +29,8 @@ public class WindowsOperationQuestion extends OperationQuestion {
 
     private String target;
 
-    public WindowsOperationQuestion(String requirement, String target) {
-        super(requirement);
+    public WindowsOperationQuestion(String requirement, List<CheckPoint> checkPoints, String target) {
+        super(requirement, checkPoints);
         this.target = target;
     }
 
