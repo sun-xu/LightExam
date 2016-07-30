@@ -18,15 +18,27 @@ package com.xsun.lightexam.operation;
 
 import com.xsun.lightexam.util.AbstractQuestion;
 
+import java.util.List;
+
 /**
  * Created by xsun on 2016/7/24.
  */
 public class OperationQuestion extends AbstractQuestion {
 
     private String requirement;
+    private List<CheckPoint> checkPoints;
 
-    public OperationQuestion(String requirement) {
+    public OperationQuestion(String requirement, List<CheckPoint> checkPoints) {
         this.requirement = requirement;
+        this.checkPoints = checkPoints;
+    }
+
+    public List<CheckPoint> getCheckPoints() {
+        return checkPoints;
+    }
+
+    public void setCheckPoints(List<CheckPoint> checkPoints) {
+        this.checkPoints = checkPoints;
     }
 
     public String getRequirement() {

@@ -22,20 +22,20 @@ import io.undertow.Undertow;
 import io.undertow.server.handlers.resource.FileResourceManager;
 import org.apache.commons.io.FileUtils;
 
-import static io.undertow.Handlers.*;
+import static io.undertow.Handlers.ipAccessControl;
+import static io.undertow.Handlers.resource;
 
 /**
  * Created by xsun on 2016/7/24.
  */
 public class WebOperationQuestionEnvironmentInitializer implements QuestionEnvironmentInitializer<WebOperationQuestion> {
-
     @Override
     public void initEnvironment(WebOperationQuestion question) {
         Undertow server = Undertow.builder()
                 .addHttpListener(8080, "127.0.0.1")
                 .setHandler(
                         ipAccessControl(
-                                virtualHost(
+//                                virtualHost(
                                         resource(
                                                 new FileResourceManager(
                                                         FileUtils.getFile(
@@ -43,17 +43,12 @@ public class WebOperationQuestionEnvironmentInitializer implements QuestionEnvir
                                                         , 1024
                                                 )
 
-                                        ), question.getHost()
-                                ), false
+                                        )
+//                                        , question.getHost()
+//                                )
+                                , false
                         ).addAllow("127.0.0.1")
                 ).build();
         server.start();
     }
-
-    public static void main(String[] args) {
-        WebOperationQuestion question = new WebOperationQuestion("requirement", "abc.com", "webroot", "");
-        WebOperationQuestionEnvironmentInitializer initializer = new WebOperationQuestionEnvironmentInitializer();
-        initializer.initEnvironment(question);
-    }
-
 }
