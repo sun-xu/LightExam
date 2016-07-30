@@ -16,9 +16,20 @@
 
 package com.xsun.lightexam.weboperation.checkpoints;
 
+import com.xsun.lightexam.util.AbstractCheckPoint;
+
 /**
  * Created by xsun on 2016/7/30.
  * 下载网页--类型三--单一网页（.html）
  */
-public class CP_WEBOP_4_3 {
+public class CP_WEBOP_4_3 extends AbstractCheckPoint {
+
+    public CP_WEBOP_4_3(String[] data) {
+        super(data);
+    }
+
+    @Override
+    public boolean check() {
+        return false;
+    }
 }

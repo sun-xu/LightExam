@@ -23,6 +23,7 @@ import com.xsun.lightexam.gui.MarkingUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.util.List;
 import java.util.Properties;
 
@@ -32,6 +33,7 @@ import java.util.Properties;
 public class Examination {
 
     private QuestionBank questionBank;
+    private File examDir;
 
     public Examination(QuestionBank qb){
         questionBank = qb;
@@ -44,6 +46,12 @@ public class Examination {
     }
 
     private void initExamEnv() {
+        examDir = new File("d:\\exam");
+        if (examDir.exists()) {
+            examDir.delete();
+        }
+        examDir.mkdirs();
+        examDir.deleteOnExit();
         List<Properties> registry = LightExam.getInstance().getQuestionRegistry().getRegistry();
         for (int i = 0; i < registry.size(); i++) {
             String envInitClassName;
@@ -72,5 +80,7 @@ public class Examination {
         return new MainUI(questionBank);
     }
 
-
+    public File getExamDir() {
+        return examDir;
+    }
 }
