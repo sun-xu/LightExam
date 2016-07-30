@@ -14,15 +14,22 @@
  * limitations under the License.
  */
 
-package com.xsun.lightexam.operation;
+package com.xsun.lightexam.weboperation.checkpoints;
+
+import com.xsun.lightexam.util.AbstractCheckPoint;
 
 /**
  * Created by xsun on 2016/7/30.
+ * 下载文字到txt文档
  */
-public interface CheckPoint {
+public class CP_WEBOP_1 extends AbstractCheckPoint {
 
-    boolean check();
+    public CP_WEBOP_1(String[] data) {
+        super(data);
+    }
 
-    String[] extraData();
-
+    @Override
+    public boolean check() {
+        return false;
+    }
 }

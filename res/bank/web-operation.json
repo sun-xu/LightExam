@@ -2,5 +2,13 @@
   "requirement": "requirement",
   "host": "test.net",
   "webroot": "webroot/",
-  "target": "target.txt"
+  "target": "target.txt",
+  "checkPoints": [
+    {
+      "type": "com.xsun.lightexam.weboperation.checkpoints.CP_WEBOP_1",
+      "data": [
+        "data"
+      ]
+    }
+  ]
 }

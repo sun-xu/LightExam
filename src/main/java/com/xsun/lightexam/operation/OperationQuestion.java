@@ -16,6 +16,7 @@
 
 package com.xsun.lightexam.operation;
 
+import com.google.gson.annotations.JsonAdapter;
 import com.xsun.lightexam.util.AbstractQuestion;
 
 import java.util.List;
@@ -26,6 +27,7 @@ import java.util.List;
 public class OperationQuestion extends AbstractQuestion {
 
     private String requirement;
+    @JsonAdapter(CheckPointsAdapter.class)
     private List<CheckPoint> checkPoints;
 
     public OperationQuestion(String requirement, List<CheckPoint> checkPoints) {

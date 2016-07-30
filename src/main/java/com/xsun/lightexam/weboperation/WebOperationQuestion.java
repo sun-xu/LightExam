@@ -29,13 +29,11 @@ public class WebOperationQuestion extends OperationQuestion {
 
     private String host;
     private String webroot;
-    private String target;
 
-    public WebOperationQuestion(String requirement, List<CheckPoint> checkPoints, String host, String webroot, String target) {
+    public WebOperationQuestion(String requirement, List<CheckPoint> checkPoints, String host, String webroot) {
         super(requirement, checkPoints);
         this.host = host;
         this.webroot = webroot;
-        this.target = target;
     }
 
     public String getHost() {
@@ -54,13 +52,6 @@ public class WebOperationQuestion extends OperationQuestion {
         this.webroot = webroot;
     }
 
-    public String getTarget() {
-        return target;
-    }
-
-    public void setTarget(String target) {
-        this.target = target;
-    }
 
     @Override
     public String toString() {
@@ -68,7 +59,7 @@ public class WebOperationQuestion extends OperationQuestion {
                 .append("requirement", getRequirement())
                 .append("host", host)
                 .append("webroot", webroot)
-                .append("target", target)
+                .append("checkPoints", getCheckPoints())
                 .toString();
     }
 }

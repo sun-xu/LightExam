@@ -14,15 +14,23 @@
  * limitations under the License.
  */
 
-package com.xsun.lightexam.operation;
+package com.xsun.lightexam.util;
+
+import com.xsun.lightexam.operation.CheckPoint;
 
 /**
  * Created by xsun on 2016/7/30.
  */
-public interface CheckPoint {
+public abstract class AbstractCheckPoint implements CheckPoint {
 
-    boolean check();
+    private String[] data;
 
-    String[] extraData();
+    public AbstractCheckPoint(String[] data) {
+        this.data = data;
+    }
 
+    @Override
+    public String[] extraData() {
+        return data;
+    }
 }

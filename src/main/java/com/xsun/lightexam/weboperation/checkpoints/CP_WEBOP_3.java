@@ -14,15 +14,11 @@
  * limitations under the License.
  */
 
-package com.xsun.lightexam.operation;
+package com.xsun.lightexam.weboperation.checkpoints;
 
 /**
  * Created by xsun on 2016/7/30.
+ * 下载图片
  */
-public interface CheckPoint {
-
-    boolean check();
-
-    String[] extraData();
-
+public class CP_WEBOP_3 {
 }
