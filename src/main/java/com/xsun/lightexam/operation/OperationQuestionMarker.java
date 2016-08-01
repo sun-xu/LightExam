@@ -25,7 +25,7 @@ public class OperationQuestionMarker implements QuestionMarker<OperationQuestion
 
     @Override
     public double mark(OperationQuestion question) {
-        return question.getCheckPoints().stream().filter(CheckPoint::check).count() / question.getCheckPoints().size();
+        return question.getCheckPoints().stream().filter(CheckPoint::check).count() / 1.0d / question.getCheckPoints().size();
     }
 
 }

@@ -10,6 +10,13 @@
         "txt.txt",
         "abcdefg"
       ]
+    },
+    {
+      "type": "com.xsun.lightexam.weboperation.checkpoints.CP_WEBOP_2",
+      "data": [
+        "doc.doc",
+        "abcdefg"
+      ]
     }
   ]
 }

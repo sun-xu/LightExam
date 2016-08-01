@@ -16,7 +16,14 @@
 
 package com.xsun.lightexam.weboperation.checkpoints;
 
+import com.xsun.lightexam.LightExam;
 import com.xsun.lightexam.util.AbstractCheckPoint;
+import org.apache.commons.io.FileUtils;
+import org.apache.poi.hwpf.HWPFDocument;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 /**
  * Created by xsun on 2016/7/30.
@@ -30,6 +37,15 @@ public class CP_WEBOP_2 extends AbstractCheckPoint {
 
     @Override
     public boolean check() {
+        File docFile = FileUtils.getFile(LightExam.getInstance().getExamination().getExamDir(), extraData()[0]);
+        if (docFile.exists() && docFile.canRead()) {
+            try (FileInputStream fis = new FileInputStream(docFile)) {
+                return new HWPFDocument(fis).getDocumentText().equals(extraData()[1] + "\r");
+            } catch (IOException e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
         return false;
     }
 }
