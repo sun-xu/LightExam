@@ -21,7 +21,7 @@ package com.xsun.lightexam.operation;
  */
 public interface CheckPoint {
 
-    boolean check();
+    boolean check(OperationQuestion operationQuestion);
 
     String[] extraData();
 

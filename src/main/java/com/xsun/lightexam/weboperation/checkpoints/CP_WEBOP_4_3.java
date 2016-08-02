@@ -16,6 +16,7 @@
 
 package com.xsun.lightexam.weboperation.checkpoints;
 
+import com.xsun.lightexam.operation.OperationQuestion;
 import com.xsun.lightexam.util.AbstractCheckPoint;
 
 /**
@@ -29,7 +30,7 @@ public class CP_WEBOP_4_3 extends AbstractCheckPoint {
     }
 
     @Override
-    public boolean check() {
+    public boolean check(OperationQuestion operationQuestion) {
         return false;
     }
 }

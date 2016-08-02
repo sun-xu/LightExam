@@ -17,6 +17,13 @@
         "doc.doc",
         "abcdefg"
       ]
+    },
+    {
+      "type": "com.xsun.lightexam.weboperation.checkpoints.CP_WEBOP_3",
+      "data": [
+        "image.jpg",
+        "image.jpg"
+      ]
     }
   ]
 }

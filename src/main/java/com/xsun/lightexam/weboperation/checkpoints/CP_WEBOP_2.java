@@ -17,6 +17,7 @@
 package com.xsun.lightexam.weboperation.checkpoints;
 
 import com.xsun.lightexam.LightExam;
+import com.xsun.lightexam.operation.OperationQuestion;
 import com.xsun.lightexam.util.AbstractCheckPoint;
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.hwpf.HWPFDocument;
@@ -36,7 +37,7 @@ public class CP_WEBOP_2 extends AbstractCheckPoint {
     }
 
     @Override
-    public boolean check() {
+    public boolean check(OperationQuestion operationQuestion) {
         File docFile = FileUtils.getFile(LightExam.getInstance().getExamination().getExamDir(), extraData()[0]);
         if (docFile.exists() && docFile.canRead()) {
             try (FileInputStream fis = new FileInputStream(docFile)) {
