@@ -24,6 +24,13 @@
         "image.jpg",
         "image.jpg"
       ]
+    },
+    {
+      "type": "com.xsun.lightexam.weboperation.checkpoints.CP_WEBOP_4_3",
+      "data": [
+        "Test1.htm",
+        "index.html"
+      ]
     }
   ]
 }

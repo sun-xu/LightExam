@@ -16,8 +16,14 @@
 
 package com.xsun.lightexam.weboperation.checkpoints;
 
+import com.xsun.lightexam.LightExam;
 import com.xsun.lightexam.operation.OperationQuestion;
 import com.xsun.lightexam.util.AbstractCheckPoint;
+import com.xsun.lightexam.weboperation.WebOperationQuestion;
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by xsun on 2016/7/30.
@@ -31,6 +37,13 @@ public class CP_WEBOP_4_3 extends AbstractCheckPoint {
 
     @Override
     public boolean check(OperationQuestion operationQuestion) {
-        return false;
+        File target = FileUtils.getFile(LightExam.getInstance().getExamination().getExamDir(), extraData()[0]);
+        File source = FileUtils.getFile(LightExam.getInstance().getBankPath(), ((WebOperationQuestion) operationQuestion).getWebroot(), extraData()[1]);
+        try {
+            return FileUtils.contentEquals(target, source);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
