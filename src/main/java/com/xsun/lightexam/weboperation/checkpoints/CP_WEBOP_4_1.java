@@ -16,8 +16,18 @@
 
 package com.xsun.lightexam.weboperation.checkpoints;
 
+import com.xsun.lightexam.LightExam;
 import com.xsun.lightexam.operation.OperationQuestion;
 import com.xsun.lightexam.util.AbstractCheckPoint;
+import com.xsun.lightexam.weboperation.WebOperationQuestion;
+import org.apache.commons.io.FileUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Comparator;
 
 /**
  * Created by xsun on 2016/7/30.
@@ -31,6 +41,27 @@ public class CP_WEBOP_4_1 extends AbstractCheckPoint {
 
     @Override
     public boolean check(OperationQuestion operationQuestion) {
+        WebOperationQuestion woq = (WebOperationQuestion) operationQuestion;
+        File target = FileUtils.getFile(LightExam.getInstance().getExamination().getExamDir(), extraData()[0]);
+        File source = FileUtils.getFile(LightExam.getInstance().getExamination().getExamDir(), extraData()[1]);
+        Document doc = null;
+        try {
+            doc = Jsoup.parse(target, "UTF-8", "http://127.0.0.1:8080");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        Element body = doc.body();
+//        body.equals()
         return false;
+    }
+
+    private class ElementComparator implements Comparator<Element> {
+
+        @Override
+        public int compare(Element o1, Element o2) {
+
+            return 0;
+        }
     }
 }
