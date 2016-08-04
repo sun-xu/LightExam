@@ -15,5 +15,11 @@
     "UiFactory": "com.xsun.lightexam.operation.OperationQuestionUiFactory",
     "EnvInit": "com.xsun.lightexam.weboperation.WebOperationQuestionEnvironmentInitializer",
     "Marker": "com.xsun.lightexam.operation.OperationQuestionMarker"
+  },
+  {
+    "Question": "com.xsun.lightexam.windowsoperation.WindowsOperationQuestion",
+    "UiFactory": "com.xsun.lightexam.operation.OperationQuestionUiFactory",
+    "EnvInit": "com.xsun.lightexam.windowsoperation.WindowsOperationQuestionEnvironmentInitializer",
+    "Marker": "com.xsun.lightexam.operation.OperationQuestionMarker"
   }
 ]

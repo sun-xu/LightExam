@@ -1,0 +1,47 @@
+{
+  "requirement": "requirement",
+  "source": "windowsoperation",
+  "checkPoints": [
+    {
+      "type": "com.xsun.lightexam.windowsoperation.checkpoints.CP_WINOP_1_1",
+      "data": [
+        "txt.txt"
+      ]
+    },
+    {
+      "type": "com.xsun.lightexam.windowsoperation.checkpoints.CP_WINOP_1_2",
+      "data": [
+        "dir/"
+      ]
+    },
+    {
+      "type": "com.xsun.lightexam.windowsoperation.checkpoints.CP_WINOP_2",
+      "data": [
+        "old.txt",
+        "new.txt"
+      ]
+    },
+    {
+      "type": "com.xsun.lightexam.windowsoperation.checkpoints.CP_WINOP_3",
+      "data": [
+        "dir1/file.txt",
+        "dir2/",
+        "true"
+      ]
+    },
+    {
+      "type": "com.xsun.lightexam.windowsoperation.checkpoints.CP_WINOP_3",
+      "data": [
+        "dir3/file.txt",
+        "dir4/",
+        "false"
+      ]
+    },
+    {
+      "type": "com.xsun.lightexam.windowsoperation.checkpoints.CP_WINOP_4",
+      "data": [
+        "delete.txt"
+      ]
+    }
+  ]
+}

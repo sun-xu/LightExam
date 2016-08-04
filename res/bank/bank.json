@@ -13,5 +13,10 @@
     "name": "IE操作题",
     "question-type": "com.xsun.lightexam.weboperation.WebOperationQuestion",
     "conf": "web-operation.json"
+  },
+  {
+    "name": "windows操作题",
+    "question-type": "com.xsun.lightexam.windowsoperation.WindowsOperationQuestion",
+    "conf": "windows-operation.json"
   }
 ]

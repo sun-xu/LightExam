@@ -27,26 +27,26 @@ import java.util.List;
  */
 public class WindowsOperationQuestion extends OperationQuestion {
 
-    private String target;
+    private String source;
 
-    public WindowsOperationQuestion(String requirement, List<CheckPoint> checkPoints, String target) {
+    public WindowsOperationQuestion(String requirement, List<CheckPoint> checkPoints, String source) {
         super(requirement, checkPoints);
-        this.target = target;
+        this.source = source;
     }
 
-    public String getTarget() {
-        return target;
+    public String getSource() {
+        return source;
     }
 
-    public void setTarget(String target) {
-        this.target = target;
+    public void setSource(String source) {
+        this.source = source;
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .append("requirement", getRequirement())
-                .append("target", target)
+                .append("target", source)
                 .toString();
     }
 }
