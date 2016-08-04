@@ -22,10 +22,10 @@ package com.xsun.lightexam.util;
 public class Version {
 
     public enum Type{
-        ALPHA,BETA,STABLE;
+        ALPHA, BETA, STABLE
     }
 
-    private static String version = "0.2.0-ALPHA";
+    private static String version = "0.3.0-ALPHA";
 
     public final Type type;
     public final int major;

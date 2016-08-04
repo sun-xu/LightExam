@@ -27,7 +27,7 @@
 apply plugin: 'java-library-distribution'
 apply plugin: 'java'
 
-version = "0.2.0-ALPHA"
+version = "0.3.0-ALPHA"
 
 repositories {
     jcenter()
