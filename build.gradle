@@ -24,8 +24,8 @@
  * user guide available at https://docs.gradle.org/2.14/userguide/tutorial_java_projects.html
  */
 
-apply plugin: 'java-library-distribution'
 apply plugin: 'java'
+apply plugin: "application"
 
 version = "0.3.0-ALPHA"
 
@@ -45,12 +45,6 @@ dependencies {
     testCompile 'org.testng:testng:6.9.10'
 }
 
-jar {
-    manifest {
-        attributes("Main-Class": "com.xsun.lightexam.LightExam")
-    }
-}
-
 distributions {
     main {
         contents {
@@ -58,7 +52,10 @@ distributions {
                 from { 'res' }
             }
             into('') {
-                from { 'startscript' }
+                from { 'LICENSE.txt' }
+                from { 'README.txt' }
+                from { 'HISTORY.txt' }
+                from { 'LightExam.vbs' }
             }
         }
     }
@@ -66,3 +63,4 @@ distributions {
 
 
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+mainClassName = "com.xsun.lightexam.LightExam"
