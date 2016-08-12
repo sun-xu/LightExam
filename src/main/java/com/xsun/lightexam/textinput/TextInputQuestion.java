@@ -18,6 +18,7 @@ package com.xsun.lightexam.textinput;
 
 import com.xsun.lightexam.api.Question;
 import com.xsun.lightexam.util.AbstractQuestion;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Created by xsun on 2016/6/18.
@@ -51,10 +52,10 @@ public class TextInputQuestion extends AbstractQuestion implements Question {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("TextInputQuestion{");
-        sb.append("source='").append(source).append('\'');
-        sb.append(", yours='").append(yours).append('\'');
-        sb.append('}');
-        return sb.toString();
+        return new ToStringBuilder(this)
+                .append("source", source)
+                .append("yours", yours)
+                .append("timeLimit", timeLimit)
+                .toString();
     }
 }

@@ -19,6 +19,7 @@ package com.xsun.lightexam;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.internal.LinkedTreeMap;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -51,18 +52,13 @@ public class QuestionRegistry {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("QuestionRegistry{");
-        sb.append("registry=").append(registry);
-        sb.append('}');
-        return sb.toString();
+        return new ToStringBuilder(this)
+                .append("registry", registry)
+                .toString();
     }
 
     public List<Properties> getRegistry() {
         return registry;
     }
 
-    //    public static void main(String[] args) throws IOException {
-//        QuestionRegistry registry = getQuestionRegistryFromJson(FileUtils.readFileToString(FileUtils.getFile(System.getProperty("user.dir"), "build", "resources", "main", "config", "question-registry.json"), "UTF-8"));
-//        System.out.println(registry);
-//    }
 }

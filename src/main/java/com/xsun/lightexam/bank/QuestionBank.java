@@ -17,6 +17,7 @@
 package com.xsun.lightexam.bank;
 
 import com.xsun.lightexam.api.Question;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.List;
 
@@ -37,9 +38,8 @@ public class QuestionBank {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("QuestionBank{");
-        sb.append("questions=").append(questions);
-        sb.append('}');
-        return sb.toString();
+        return new ToStringBuilder(this)
+                .append("questions", questions)
+                .toString();
     }
 }
