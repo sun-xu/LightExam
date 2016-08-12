@@ -29,15 +29,18 @@ public class ChoiceQuestion extends AbstractQuestion implements Question {
     private String op2;
     private String op3;
     private String op4;
+    private String image;
     private int chosen;
     private int answer;
 
-    public ChoiceQuestion(String stem, String op1, String op2, String op3, String op4, int answer) {
+    public ChoiceQuestion(String stem, String op1, String op2, String op3, String op4, String image, int chosen, int answer) {
         this.stem = stem;
         this.op1 = op1;
         this.op2 = op2;
         this.op3 = op3;
         this.op4 = op4;
+        this.image = image;
+        this.chosen = chosen;
         this.answer = answer;
     }
 
@@ -73,19 +76,21 @@ public class ChoiceQuestion extends AbstractQuestion implements Question {
         return answer;
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("ChoiceQuestion{");
-        sb.append("chosen=").append(chosen);
-        sb.append(", stem='").append(stem).append('\'');
-        sb.append(", op1='").append(op1).append('\'');
-        sb.append(", op2='").append(op2).append('\'');
-        sb.append(", op3='").append(op3).append('\'');
-        sb.append(", op4='").append(op4).append('\'');
-        sb.append(", answer=").append(answer);
-        sb.append('}');
-        return sb.toString();
+    public String getImage() {
+        return image;
     }
 
-
+    @Override
+    public String toString() {
+        return new org.apache.commons.lang3.builder.ToStringBuilder(this)
+                .append("stem", stem)
+                .append("op1", op1)
+                .append("op2", op2)
+                .append("op3", op3)
+                .append("op4", op4)
+                .append("image", image)
+                .append("chosen", chosen)
+                .append("answer", answer)
+                .toString();
+    }
 }

@@ -18,10 +18,13 @@ package com.xsun.lightexam.choice.ui;
 
 import com.xsun.lightexam.choice.ChoiceQuestion;
 import com.xsun.lightexam.choice.ChoiceQuestionList;
+import com.xsun.lightexam.util.Utility;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 /**
  * Created by xsun on 2016/6/15.
@@ -31,7 +34,7 @@ public class ChoiceQuestionUI extends JFrame {
     private JPanel jp1, jp2, jp3, jp4, jp5, jp6;
     private JTextArea jta;
     private JRadioButton jrb1, jrb2, jrb3, jrb4;
-    private JLabel op1, op2, op3, op4;
+    private JLabel op1, op2, op3, op4, img;
     private JButton jb1, jb2;
     private ButtonGroup bg;
 
@@ -64,7 +67,9 @@ public class ChoiceQuestionUI extends JFrame {
         jta = new JTextArea();
         jta.setEditable(false);
         jta.setLineWrap(true);
+        img = new JLabel();
         jp1.add(jta, BorderLayout.CENTER);
+        jp1.add(img, BorderLayout.EAST);
 
         jp2 = new JPanel(bl2);
 
@@ -173,6 +178,12 @@ public class ChoiceQuestionUI extends JFrame {
         } else {
             jb1.setEnabled(true);
             jb2.setEnabled(true);
+        }
+        try {
+            File imageFile = Utility.getFileInBankDir(cq.getImage());
+            img.setIcon(new ImageIcon(ImageIO.read(imageFile)));
+        } catch (Exception e) {
+            img.setIcon(new ImageIcon());
         }
     }
 
