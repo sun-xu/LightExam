@@ -20,6 +20,7 @@ import com.xsun.lightexam.api.QuestionEnvironmentInitializer;
 import com.xsun.lightexam.bank.QuestionBank;
 import com.xsun.lightexam.gui.MainUI;
 import com.xsun.lightexam.gui.MarkingUI;
+import com.xsun.lightexam.login.Examinee;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,10 +34,12 @@ import java.util.Properties;
 public class Examination {
 
     private QuestionBank questionBank;
+    private Examinee examinee;
     private File examDir;
 
-    public Examination(QuestionBank qb){
-        questionBank = qb;
+    public Examination(QuestionBank questionBank, Examinee examinee) {
+        this.questionBank = questionBank;
+        this.examinee = examinee;
     }
 
     public void start() {
@@ -82,5 +85,9 @@ public class Examination {
 
     public File getExamDir() {
         return examDir;
+    }
+
+    public Examinee getExaminee() {
+        return examinee;
     }
 }

@@ -16,14 +16,21 @@
 
 package com.xsun.lightexam;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.xsun.lightexam.bank.QuestionBank;
 import com.xsun.lightexam.bank.QuestionBankReader;
+import com.xsun.lightexam.login.Examinee;
+import com.xsun.lightexam.login.Login;
+import com.xsun.lightexam.util.Utility;
 import com.xsun.lightexam.util.Version;
 import org.apache.commons.io.FileUtils;
 
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by xsun on 2016/6/14.
@@ -32,9 +39,26 @@ public class LightExam {
 
     private QuestionRegistry registry;
     private Examination exam;
+    public final static Map<String, String> config;
 
     public static final LightExam getInstance() {
         return InstanceHolder.INSTANCE;
+    }
+
+    static {
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
+        String src = null;
+        try {
+            src = FileUtils.readFileToString(FileUtils.getFile(System.getProperty("user.dir"), "res", "config", "le.json"), "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (src != null) {
+            config = gson.fromJson(src, HashMap.class);
+        } else {
+            config = new HashMap<>();
+        }
     }
 
     private static class InstanceHolder {
@@ -48,15 +72,21 @@ public class LightExam {
         try {
             bank = bankReader.readBank(
                     FileUtils.readFileToString(
-                            FileUtils.getFile(getInstance().getBankPath(), "bank.json"),
+                            Utility.getFileInBankDir("bank.json"),
                             "UTF-8"));
         } catch (IOException e) {
             System.err.println("读取题库时出错！");
             e.printStackTrace();
             System.exit(1);
         }
-        getInstance().exam = new Examination(bank);
-        //TODO: 加入登录系统
+        Examinee examinee = null;
+        try {
+            Login login = (Login) Class.forName(config.get("login")).newInstance();
+            examinee = login.login();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        getInstance().exam = new Examination(bank, examinee);
         getInstance().exam.start();
     }
 
