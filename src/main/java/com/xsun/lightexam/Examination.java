@@ -80,7 +80,7 @@ public class Examination {
     }
 
     private JFrame initUi() {
-        return new MainUI(questionBank);
+        return new MainUI(questionBank, examinee);
     }
 
     public File getExamDir() {

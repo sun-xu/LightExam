@@ -19,13 +19,17 @@ package com.xsun.lightexam.gui;
 import com.xsun.lightexam.LightExam;
 import com.xsun.lightexam.api.QuestionUiFactory;
 import com.xsun.lightexam.bank.QuestionBank;
+import com.xsun.lightexam.login.Examinee;
+import org.apache.commons.io.FileUtils;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 import java.util.Properties;
 
 /**
@@ -33,10 +37,39 @@ import java.util.Properties;
  */
 public class MainUI extends JFrame {
 
-    private QuestionBank bank;
+    public static class ExamineeInfoPanel extends JPanel {
+        private Examinee examinee;
 
-    public MainUI(QuestionBank bank) {
+        public ExamineeInfoPanel(Examinee examinee) {
+            this.examinee = examinee;
+        }
+
+        @Override
+        public void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            g.drawImage(examinee.getImage() == null ? getDefaultExamineeImage() : examinee.getImage(),
+                    10, 10, 150, 200, this);
+            g.drawString("考生姓名：" + examinee.getRealName(), 170, 60);
+            g.drawString("准考证号：" + examinee.getIdentifier(), 170, 100);
+            g.drawString("考生性别：" + (examinee.getSex() ? "男" : "女"), 170, 140);
+        }
+
+        public static Image getDefaultExamineeImage() {
+            try {
+                return ImageIO.read(FileUtils.getFile(LightExam.getInstance().getConfigPath(), "dei.png"));
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+    }
+
+    private QuestionBank bank;
+    private Examinee examinee;
+
+    public MainUI(QuestionBank bank, Examinee examinee) {
         this.bank = bank;
+        this.examinee = examinee;
         initUI();
     }
 
@@ -58,6 +91,11 @@ public class MainUI extends JFrame {
                 }
             }
         });
+        JPanel jp = new JPanel(null);
+        ExamineeInfoPanel ip = new ExamineeInfoPanel(examinee);
+        jp.add(ip);
+        ip.setBounds(0, 0, 500, 300);
+        add(jp, BorderLayout.CENTER);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 

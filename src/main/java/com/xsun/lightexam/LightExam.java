@@ -67,6 +67,15 @@ public class LightExam {
 
     public static void main(String[] args) {
         checkVersion();
+        Examinee examinee = null;
+        try {
+            Login login = (Login) Class.forName(config.get("login")).newInstance();
+            examinee = login.login();
+        } catch (Exception e) {
+            System.err.println("登陆出错！");
+            e.printStackTrace();
+            System.exit(1);
+        }
         QuestionBankReader bankReader = new QuestionBankReader();
         QuestionBank bank = null;
         try {
@@ -78,13 +87,6 @@ public class LightExam {
             System.err.println("读取题库时出错！");
             e.printStackTrace();
             System.exit(1);
-        }
-        Examinee examinee = null;
-        try {
-            Login login = (Login) Class.forName(config.get("login")).newInstance();
-            examinee = login.login();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
         getInstance().exam = new Examination(bank, examinee);
         getInstance().exam.start();
