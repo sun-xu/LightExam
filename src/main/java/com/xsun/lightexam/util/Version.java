@@ -25,7 +25,7 @@ public class Version {
         ALPHA, BETA, STABLE
     }
 
-    private static String version = "0.3.0-ALPHA";
+    private static String version = "0.4.0-ALPHA";
 
     public final Type type;
     public final int major;
