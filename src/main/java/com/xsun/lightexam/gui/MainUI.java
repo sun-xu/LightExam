@@ -96,6 +96,7 @@ public class MainUI extends JFrame {
         jp.add(ip);
         ip.setBounds(0, 0, 500, 300);
         add(jp, BorderLayout.CENTER);
+        setTitle(bank.getTitle() + " - LightExam");
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 

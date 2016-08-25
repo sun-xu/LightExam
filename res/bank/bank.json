@@ -1,22 +1,26 @@
-[
-  {
-    "name": "选择题",
-    "question-type": "com.xsun.lightexam.choice.ChoiceQuestionList",
-    "conf": "choice.json"
-  },
-  {
-    "name": "打字题",
-    "question-type": "com.xsun.lightexam.textinput.TextInputQuestion",
-    "conf": "text-input.json"
-  },
-  {
-    "name": "IE操作题",
-    "question-type": "com.xsun.lightexam.weboperation.WebOperationQuestion",
-    "conf": "web-operation.json"
-  },
-  {
-    "name": "windows操作题",
-    "question-type": "com.xsun.lightexam.windowsoperation.WindowsOperationQuestion",
-    "conf": "windows-operation.json"
-  }
-]
+{
+  "title": "测试题库",
+  "time": "3600",
+  "questions": [
+    {
+      "name": "选择题",
+      "question-type": "com.xsun.lightexam.choice.ChoiceQuestionList",
+      "conf": "choice.json"
+    },
+    {
+      "name": "打字题",
+      "question-type": "com.xsun.lightexam.textinput.TextInputQuestion",
+      "conf": "text-input.json"
+    },
+    {
+      "name": "IE操作题",
+      "question-type": "com.xsun.lightexam.weboperation.WebOperationQuestion",
+      "conf": "web-operation.json"
+    },
+    {
+      "name": "windows操作题",
+      "question-type": "com.xsun.lightexam.windowsoperation.WindowsOperationQuestion",
+      "conf": "windows-operation.json"
+    }
+  ]
+}

@@ -19,7 +19,6 @@ package com.xsun.lightexam;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.xsun.lightexam.bank.QuestionBank;
-import com.xsun.lightexam.bank.QuestionBankReader;
 import com.xsun.lightexam.login.Examinee;
 import com.xsun.lightexam.login.Login;
 import com.xsun.lightexam.util.Utility;
@@ -76,10 +75,9 @@ public class LightExam {
             e.printStackTrace();
             System.exit(1);
         }
-        QuestionBankReader bankReader = new QuestionBankReader();
         QuestionBank bank = null;
         try {
-            bank = bankReader.readBank(
+            bank = QuestionBank.fromJson(
                     FileUtils.readFileToString(
                             Utility.getFileInBankDir("bank.json"),
                             "UTF-8"));

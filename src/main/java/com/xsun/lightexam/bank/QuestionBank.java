@@ -16,6 +16,8 @@
 
 package com.xsun.lightexam.bank;
 
+import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.JsonAdapter;
 import com.xsun.lightexam.api.Question;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
@@ -26,10 +28,23 @@ import java.util.List;
  */
 public class QuestionBank {
 
+    private String title;
+    private long time;
+    @JsonAdapter(QuestionsAdapter.class)
     private List<Question> questions;
 
-    public QuestionBank(List<Question> questions) {
+    public QuestionBank(String title, long time, List<Question> questions) {
+        this.title = title;
+        this.time = time;
         this.questions = questions;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public long getTime() {
+        return time;
     }
 
     public List<Question> getQuestions() {
@@ -39,7 +54,13 @@ public class QuestionBank {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
+                .append("title", title)
+                .append("time", time)
                 .append("questions", questions)
                 .toString();
+    }
+
+    public static QuestionBank fromJson(String json) {
+        return new GsonBuilder().create().fromJson(json, QuestionBank.class);
     }
 }

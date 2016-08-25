@@ -16,6 +16,7 @@
 
 package com.xsun.lightexam;
 
+import com.xsun.lightexam.api.Question;
 import com.xsun.lightexam.api.QuestionEnvironmentInitializer;
 import com.xsun.lightexam.bank.QuestionBank;
 import com.xsun.lightexam.gui.MainUI;
@@ -25,7 +26,9 @@ import com.xsun.lightexam.login.Examinee;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -48,6 +51,7 @@ public class Examination {
         EventQueue.invokeLater(() -> jFrame.setVisible(true));
     }
 
+    @SuppressWarnings("unchecked")
     private void initExamEnv() {
         examDir = new File("d:\\exam");
         if (examDir.exists()) {
@@ -56,19 +60,25 @@ public class Examination {
         examDir.mkdirs();
         examDir.deleteOnExit();
         List<Properties> registry = LightExam.getInstance().getQuestionRegistry().getRegistry();
-        for (int i = 0; i < registry.size(); i++) {
-            String envInitClassName;
-            if ((envInitClassName = registry.get(i).getProperty("EnvInit")) != null) {
-                QuestionEnvironmentInitializer initializer = null;
+        Map<String, String> initers = new HashMap<>();
+        for (Properties p : registry) {
+            initers.put(p.getProperty("Question"), p.getProperty("EnvInit"));
+        }
+        List<Question> questions = questionBank.getQuestions();
+        for (Question q : questions) {
+            String initerClassName = initers.get(q.getClass().getName());
+            if (initerClassName != null) {
                 try {
-                    initializer = (QuestionEnvironmentInitializer) Class.forName(envInitClassName).newInstance();
-                } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+
+                    QuestionEnvironmentInitializer initer =
+                            (QuestionEnvironmentInitializer)
+                                    Class.forName(initerClassName).newInstance();
+                    initer.initEnvironment(q);
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
-                initializer.initEnvironment(questionBank.getQuestions().get(i));
             }
         }
-
     }
 
     public void stop() {
