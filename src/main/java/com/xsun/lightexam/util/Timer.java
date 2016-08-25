@@ -41,15 +41,15 @@ public class Timer {
     }
 
     public interface TimerListener {
-        void timeChange(int second);
+        void timeChange(long second);
     }
 
     private List<TimerListener> listeners = new CopyOnWriteArrayList<>();
-    private int time;
+    private long time;
     private ScheduledExecutorService service;
     private ExecutorService service1;
 
-    public Timer(int initTime) {
+    public Timer(long initTime) {
         time = initTime;
     }
 

@@ -22,8 +22,8 @@ import com.xsun.lightexam.bank.QuestionBank;
 import com.xsun.lightexam.gui.MainUI;
 import com.xsun.lightexam.gui.MarkingUI;
 import com.xsun.lightexam.login.Examinee;
+import com.xsun.lightexam.util.Timer;
 
-import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.util.HashMap;
@@ -39,16 +39,20 @@ public class Examination {
     private QuestionBank questionBank;
     private Examinee examinee;
     private File examDir;
+    private Timer timer;
+    private MainUI ui;
 
     public Examination(QuestionBank questionBank, Examinee examinee) {
         this.questionBank = questionBank;
         this.examinee = examinee;
+        timer = new Timer(questionBank.getTime());
     }
 
     public void start() {
         initExamEnv();
-        JFrame jFrame = initUi();
-        EventQueue.invokeLater(() -> jFrame.setVisible(true));
+        ui = initUi();
+        EventQueue.invokeLater(() -> ui.setVisible(true));
+        timer.run();
     }
 
     @SuppressWarnings("unchecked")
@@ -81,15 +85,24 @@ public class Examination {
         }
     }
 
+    public Timer.TimerUI createTUI() {
+        return Timer.TimerUI.create(timer);
+    }
+
+    public void addTimerListener(Timer.TimerListener l) {
+        timer.addListener(l);
+    }
+
     public void stop() {
+        timer.stopCountDown();
         System.exit(0);
     }
 
     public void mark() {
-        EventQueue.invokeLater(() -> new MarkingUI(questionBank).setVisible(true));
+        EventQueue.invokeLater(() -> new MarkingUI(questionBank, ui).setVisible(true));
     }
 
-    private JFrame initUi() {
+    private MainUI initUi() {
         return new MainUI(questionBank, examinee);
     }
 

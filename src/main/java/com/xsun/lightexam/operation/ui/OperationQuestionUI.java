@@ -63,7 +63,7 @@ public class OperationQuestionUI extends JFrame {
         add(jta, BorderLayout.CENTER);
         add(jp2, BorderLayout.SOUTH);
 
-        setSize(400, 500);
+        setSize(500, 400);
     }
 
 }

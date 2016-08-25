@@ -39,9 +39,14 @@ public class MainUI extends JFrame {
 
     public static class ExamineeInfoPanel extends JPanel {
         private Examinee examinee;
+        private long time;
 
         public ExamineeInfoPanel(Examinee examinee) {
             this.examinee = examinee;
+            LightExam.getInstance().getExamination().addTimerListener(s -> {
+                repaint();
+                time = s;
+            });
         }
 
         @Override
@@ -49,9 +54,11 @@ public class MainUI extends JFrame {
             super.paintComponent(g);
             g.drawImage(examinee.getImage() == null ? getDefaultExamineeImage() : examinee.getImage(),
                     10, 10, 150, 200, this);
-            g.drawString("考生姓名：" + examinee.getRealName(), 170, 60);
-            g.drawString("准考证号：" + examinee.getIdentifier(), 170, 100);
-            g.drawString("考生性别：" + (examinee.getSex() ? "男" : "女"), 170, 140);
+            g.setFont(new Font("微软雅黑", Font.PLAIN, 15));
+            g.drawString("考生姓名：" + examinee.getRealName(), 170, 50);
+            g.drawString("准考证号：" + examinee.getIdentifier(), 170, 85);
+            g.drawString("考生性别：" + (examinee.getSex() ? "男" : "女"), 170, 120);
+            g.drawString(String.format("剩余时间：%d分%d秒", time / 60, time % 60), 170, 155);
         }
 
         public static Image getDefaultExamineeImage() {
@@ -134,7 +141,7 @@ public class MainUI extends JFrame {
         jMenu.addMenuListener(new MenuAdapter() {
             @Override
             public void menuSelected(MenuEvent e) {
-                EventQueue.invokeLater(LightExam.getInstance().getExamination()::mark);
+                LightExam.getInstance().getExamination().mark();
             }
         });
         jMenuBar.add(jMenu);

@@ -50,7 +50,7 @@ public class ChoiceQuestionUI extends JFrame {
         initUI();
         doing = 0;
         update();
-        pack();
+        setSize(new Dimension(500, 400));
     }
 
     private void initUI() {

@@ -23,18 +23,20 @@ import com.xsun.lightexam.bank.QuestionBank;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 /**
  * Created by xsun on 2016/7/18.
  */
-public class MarkingUI extends JFrame {
+public class MarkingUI extends JDialog {
 
     private QuestionBank bank;
     private JTextArea jta;
 
-    public MarkingUI(QuestionBank bank) {
+    public MarkingUI(QuestionBank bank, MainUI ui) {
+        super(ui, true);
         this.bank = bank;
         setTitle("评卷");
         jta = new JTextArea();
@@ -43,13 +45,16 @@ public class MarkingUI extends JFrame {
         add(jta, BorderLayout.CENTER);
         JPanel jp = new JPanel();
         JButton jb1 = new JButton("返回");
-        jb1.addActionListener(e -> setVisible(false));
+        jb1.addActionListener(e -> {
+            setVisible(false);
+            processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+        });
         jp.add(jb1);
         JButton jb2 = new JButton("退出");
         jb2.addActionListener(e -> LightExam.getInstance().getExamination().stop());
         jp.add(jb2);
         add(jp, BorderLayout.SOUTH);
-        setSize(200, 450);
+        setSize(350, 400);
         new BankMarker().execute();
     }
 
