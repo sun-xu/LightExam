@@ -1,35 +1,14 @@
 {
-  "requirement": "requirement",
+  "requirement": "浏览网站http://127.0.0.1，将网页上的文字复制到考试目录下的context.txt中\n\n考试目录位于D:\\exam",
   "host": "test.net",
   "webroot": "webroot/",
-  "target": "target.txt",
+  "target": "context.txt",
   "checkPoints": [
     {
       "type": "com.xsun.lightexam.weboperation.checkpoints.CP_WEBOP_1",
       "data": [
-        "txt.txt",
-        "abcdefg"
-      ]
-    },
-    {
-      "type": "com.xsun.lightexam.weboperation.checkpoints.CP_WEBOP_2",
-      "data": [
-        "doc.doc",
-        "abcdefg"
-      ]
-    },
-    {
-      "type": "com.xsun.lightexam.weboperation.checkpoints.CP_WEBOP_3",
-      "data": [
-        "image.jpg",
-        "image.jpg"
-      ]
-    },
-    {
-      "type": "com.xsun.lightexam.weboperation.checkpoints.CP_WEBOP_4_3",
-      "data": [
-        "Test1.htm",
-        "index.html"
+        "context.txt",
+        "Minecraft是一款沙盒游戏，所呈现的世界并不是华丽的画面与特效，而是注重在游戏性上面。整个游戏没有剧情，玩家在游戏中自由建设和破坏，透过像乐高一样的积木来组合与拼凑，轻而易举的就能制作出小木屋、城堡甚至城市，但是若再加上玩家的想象力，天空之城、地底都市都一样能够实现。玩家不仅可以创造房屋建筑，甚至可以创造属于自己的都市和世界，玩家可以通过自己创造的作品来体验上帝一般的感觉。在这款游戏里，不仅可以单人娱乐，还可以多人联机，玩家也可以安装一些模组来增加游戏趣味性。Minecraft着重于让玩家去探索，交互，并且改变一个由一立方米大小的方块动态生成的地图。除了方块以外，环境功能还包括植物、生物与物品。游戏里的一些活动包括采集矿石、与敌对生物战斗、合成新的方块与收集各种在游戏中找到的资源的工具。游戏中的无限制模式让玩家在各种多人游戏服务器或他们的单人模式中进行创造建筑物、作品与艺术创作。其他功能包括逻辑运算与远程动作的红石电路、矿车及轨道, 以及称之为\"下界\"的神秘世界。最终，可以选择前往一个叫做“末路之地”的维度旅行，并打倒末影龙。"
       ]
     }
   ]

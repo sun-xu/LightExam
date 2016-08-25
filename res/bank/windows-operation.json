@@ -1,5 +1,5 @@
 {
-  "requirement": "requirement",
+  "requirement": "1.新建txt.txt\n2.新建文件夹dir\n3.将old.txt重命名为new.txt\n4.把dir1\\file.txt复制到dir2中\n5.把dir3\\file.txt移动到dir4中\n6.删除delete.txt",
   "source": "windowsoperation",
   "checkPoints": [
     {

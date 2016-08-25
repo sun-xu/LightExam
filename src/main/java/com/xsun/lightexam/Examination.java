@@ -23,9 +23,11 @@ import com.xsun.lightexam.gui.MainUI;
 import com.xsun.lightexam.gui.MarkingUI;
 import com.xsun.lightexam.login.Examinee;
 import com.xsun.lightexam.util.Timer;
+import org.apache.commons.io.FileUtils;
 
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,7 +61,11 @@ public class Examination {
     private void initExamEnv() {
         examDir = new File("d:\\exam");
         if (examDir.exists()) {
-            examDir.delete();
+            try {
+                FileUtils.deleteDirectory(examDir);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         examDir.mkdirs();
         examDir.deleteOnExit();

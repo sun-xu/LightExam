@@ -24,6 +24,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 
 /**
@@ -61,7 +62,7 @@ public class ChoiceQuestionUI extends JFrame {
         gl2 = new GridLayout(4, 1, 5, 5);
         bl1 = new BorderLayout();
         bl2 = new BorderLayout();
-        bl3 = new BorderLayout();
+        bl3 = new BorderLayout(5, 15);
 
         jp1 = new JPanel(bl1);
         jta = new JTextArea();
@@ -181,7 +182,13 @@ public class ChoiceQuestionUI extends JFrame {
         }
         try {
             File imageFile = Utility.getFileInBankDir(cq.getImage());
-            img.setIcon(new ImageIcon(ImageIO.read(imageFile)));
+            BufferedImage im = ImageIO.read(imageFile);
+            BufferedImage result = new BufferedImage(200, 200,
+                    BufferedImage.TYPE_INT_RGB);
+            result.getGraphics().drawImage(
+                    im.getScaledInstance(200, 200,
+                            java.awt.Image.SCALE_SMOOTH), 0, 0, null);
+            img.setIcon(new ImageIcon(result));
         } catch (Exception e) {
             img.setIcon(new ImageIcon());
         }
